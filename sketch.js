@@ -11,9 +11,9 @@ Hack It: Robot Olympics
     * [V HARD] add "on your marks.", "Get set" and "go" before the start of the race. 
 */
 
-var finishLineX = 1450;
+var finishLineX = 1050;
 
-var cameraPosX = 0
+// var cameraPosX = 0
 // var robotXs = [40, 40, 40, 40, 40];
 // var robotYs = [50, 200, 350, 500, 650];
 
@@ -59,7 +59,7 @@ function setup()
 function draw()
 {
 
-	cameraPosX = robots.X - width / 2;
+	// cameraPosX = robots.X - width / 2;
 
 	background(200, 100, 0);
 
@@ -69,12 +69,20 @@ function draw()
 	stroke(255);
 	line(finishLineX, 0, finishLineX, height);
 	line(0, robots[0].Y - 20, width, robots[0].Y - 10);
+	textSize(40);
+
+	
 
 	for (var i = 0; i < 5; i++)
 		{
 			if (robots[i].X < finishLineX)
 			robots[i].X += robots[i].speed
+			// if (robots[i].X > finishLineX) {
+			// 	text("Robot " + (i + 1) + " Wins the race", width / 2, height / 2);
+			// }			
 		}
+
+		
 
 	for (var i = 0; i < robots.length; i++)
 	{
@@ -141,6 +149,11 @@ function draw()
 
 
 		//TODO Check if the robot has won and display message!   
+
+		if (robots[i].X > finishLineX) {
+			text("Robot " + (i + 1) + " Wins the race", width / 2, height / 2);
+			// noLoop();
+		}			
 	}
 
 }
